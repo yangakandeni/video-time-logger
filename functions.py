@@ -39,7 +39,7 @@ def log_running_times(recorded_times={}):
     
     with open('video_logs.pickle', 'wb+') as f:
 
-        print("\nSaving video running times ....")
+        print("\nSaving video running times ....\n")
         pickle.dump(recorded_times, f, pickle.HIGHEST_PROTOCOL)
     return recorded_times
 
