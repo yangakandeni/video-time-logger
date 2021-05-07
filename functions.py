@@ -32,17 +32,16 @@ def record_running_times(total_videos):
 
     return running_times
 
-def log_running_times(recorded_times):
+def log_running_times(recorded_times={}):
     
     current_logs = display_running_times()
     recorded_times.update(current_logs)
     
-
     with open('video_logs.pickle', 'wb+') as f:
 
         print("\nSaving video running times ....")
         pickle.dump(recorded_times, f, pickle.HIGHEST_PROTOCOL)
-    return "\nDone!\n"
+    return recorded_times
 
 def display_running_times():
     logs = {}
@@ -55,7 +54,7 @@ def display_running_times():
     except FileNotFoundError:
         with open('video_logs.pickle', 'ab+') as f:
             pass
-        # print("\nWe created a new file for you\n")
+        return logs
 
 def calc_total_duration(total_records):
     total_duration = sum(total_records.values())
